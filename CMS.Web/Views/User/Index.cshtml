@@ -1,0 +1,26 @@
+﻿@model CMS.Web.Models.CurrentUser
+@using Microsoft.AspNetCore.Http
+@{
+    ViewData["Title"] = "Index";
+    CurrentUser userViewData = ViewData["User01"] as CurrentUser;
+    CurrentUser userViewBag = ViewBag.User;
+    CurrentUser userTemp = base.TempData["User02"] as CurrentUser;
+    CurrentUser userSession = Newtonsoft.Json.JsonConvert.DeserializeObject<CurrentUser>(base.Context.Session.GetString("CurrentUserSession"));
+}
+
+<h1>User-Index</h1>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>ViewData:(Current)@ViewData["User01"].UserName</p>
+        <p>userViewData:@userViewData.UserName</p>
+        <p>userViewBag:@userViewBag.Account</p>
+        <p>userTemp:@userTemp.UserName</p>
+        <p>Model:@base.Model.UserName</p>
+        <p>userSession:@userSession.UserName</p>
+    </div>
+
+</div>
+
